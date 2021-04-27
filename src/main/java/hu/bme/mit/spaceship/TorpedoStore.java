@@ -28,7 +28,7 @@ public class TorpedoStore {
     }
   }
 
-  private SecureRandom generator = new SecureRandom();
+  private static SecureRandom generator = new SecureRandom();
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
