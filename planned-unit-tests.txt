@@ -1,0 +1,28 @@
+/**
+  * Tries to fire the torpedo stores of the ship.
+  *
+  * @param firingMode how many torpedo bays to fire
+  * 	SINGLE: fires only one of the bays.
+  * 			- For the first time the primary store is fired.
+  * 			- To give some cooling time to the torpedo stores, torpedo stores are fired alternating.
+  * 			- But if the store next in line is empty, the ship tries to fire the other store.
+  * 			- If the fired store reports a failure, the ship does not try to fire the other one.
+  * 	ALL:	tries to fire both of the torpedo stores.
+  *
+  * @return whether at least one torpedo was fired successfully
+  */
+
+Már van teszt arra, hogy ha működik az elsődleges store, és SINGLE módban lövünk,
+illetve arra is, ha működik mindkettő, és ALL módban lövünk.
+Ellenőrizendő:
+- SINGLE: Két egymás utáni kilövésnél mindkét torpedo bay egyszer lő
+- SINGLE: Ha üres a pillanatnyi bay, akkor a másik kerül kilövésre (ez mindkét verzióban kell)
+- SINGLE: Ha hibát jelez a pillanatnyi bay, akkor a másik *nem* kerül kilövésre (ez is mindkét verzióban)
+- ALL: Igazzal tér-e ténylegesen vissza, ha az egyik vagy a másik store hibás?
+- ALL: Hamissal tér-e ténylegesen vissza, ha mindkét store hibás?
+
+Teszteset a kód alapján:
+- Csak akkor lőjük ki a megfelelő bayt ALL módban, ha az nem üres.
+
+Tesztlefedettség-mérés utáni tesztesetek:
+- SINGLE mód: Hamissal térünk-e vissza, ha mindkét bay üres? (mindkét verzióban)
